@@ -143,7 +143,8 @@ export class ProformaComponent implements OnInit {
 
   
     /*Inicio del script de word para crearlo segun la plantilla y descarga si viene desde el metodo ZIP*/
-    createWord = (myAttributes) => {
+    createWord = (myAttributes) => { 
+      //url cambia de manera local
       loadFile("./proforma-central-de-aceros/assets/templateProforma.docx", function (error, content) {
         if (error) {
           throw error;
