@@ -1,0 +1,48 @@
+<h3 class="text-center text-secondary mt-2"> Proforma </h3>
+<div class="row justify-content-center">
+  <div class="col-3 ">
+    <input #numeroProforma type="number" class="form-control" placeholder="# Proforma" required>
+  </div>  
+</div>
+<hr>
+<form >
+<div class="container">
+    <div class="pb-3 " *ngFor="let numLineas of numeroLineas; let i = index "><!--Inicio del item-->
+    <div class="row mb-1">  
+        <div class="col-6">
+            <h5 class=" text-secondary text-left"> Item #{{i+1}}</h5>
+        </div>
+        <div class="col-6 text-right">
+            <button id="button" type="button" class="btn btn-light" (click)="deleteItem(i)">x</button>
+        </div>
+    </div>
+    <div  #formulario class="form-row">
+      <div class="col-md mb-1">
+        <input id="cantidad{{i}}" type="number" class="form-control" placeholder="Cantidad" required>
+      </div>
+      <div class="col-md mb-1">
+        <input  #codigo  type="text" class="form-control" placeholder="Código">
+      </div>
+      <div class="col-md-5 mb-1">
+        <input #descripcion  class="form-control" placeholder="Descripción">
+      </div>
+      <div class="col-md mb-1">
+        <input #medidas type="text" class="form-control" placeholder="Medidas">
+      </div>
+      <div class="col-md mb-1">
+        <input #precioUnit type="number" class="form-control" placeholder="Precio unit" required>
+      </div>
+      <div  class="col-md form-control excento mb-1">
+        <input type="checkbox" id="excentoCheck">
+        <label class="pl-1" for="excentoCheck">
+          Excento
+        </label>
+      </div>
+    </div>
+    </div> <!--Fin del item-->
+    <div class="text-center mt-4">
+    <button type="button" class="btn btn-info mr-1" (click)="addLine()">Agregar otro item</button>
+    <button type="button" class="btn btn-info" (click) ="createProforma()">Descargar PDF</button>
+    </div>
+</div>
+  </form>
