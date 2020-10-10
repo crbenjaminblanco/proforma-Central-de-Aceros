@@ -196,7 +196,7 @@ export class ProformaComponent implements OnInit {
           mimeType:
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         }); //Output the document using Data-URI
-          saveAs(out, "Proforma"+".docx"); //Descarga el archivo
+          saveAs(out, "Proforma_"+myAttributes.numeroProforma+".docx"); //Descarga el archivo
       
       });
     };
