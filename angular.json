@@ -121,8 +121,13 @@
               "devServerTarget": "centralDeAceros:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "centralDeAceros"
 }
