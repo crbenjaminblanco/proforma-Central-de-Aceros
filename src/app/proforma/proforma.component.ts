@@ -145,7 +145,7 @@ export class ProformaComponent implements OnInit {
     /*Inicio del script de word para crearlo segun la plantilla y descarga si viene desde el metodo ZIP*/
     createWord = (myAttributes) => { 
       //url cambia de manera local
-      loadFile("./proforma-central-de-aceros/assets/templateProforma.docx", function (error, content) {
+      loadFile("./assets/templateProforma.docx", function (error, content) {
         if (error) {
           throw error;
         }
@@ -196,7 +196,7 @@ export class ProformaComponent implements OnInit {
           mimeType:
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         }); //Output the document using Data-URI
-          saveAs(out, "output Proforma.docx"); //Descarga el archivo
+          saveAs(out, "Proforma_"+this.numeroProforma+".docx"); //Descarga el archivo
       
       });
     };
