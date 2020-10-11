@@ -41,8 +41,16 @@
     </div>
     </div> <!--Fin del item-->
     <div class="text-center mt-4">
-    <button type="button" class="btn btn-info mr-1" (click)="addLine()">Agregar otro item</button>
-    <button type="button" class="btn btn-info" (click) ="createProforma()">Descargar</button>
+    <button type="button" class="btn btn-info mr-1" (click)="addLine()">Agregar otro item
+    </button>
+    <button type="button" class="btn btn-info" (click) ="createProforma()" [disabled]="descargando">
+      <span #descargarPDF> Descargar PDF</span>
+      <span *ngIf="descargando">
+      &nbsp;
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only">Loading...</span>
+      </span>
+    </button>
     </div>
 </div>
   </form>
