@@ -113,7 +113,7 @@ export class ProformaComponent implements OnInit {
         this.mensajeError="Parece que la cantidad no es válida en el item #"+(i+1);
       }
 
-      if (objetoTarget.precioUnit=='' && objetoTarget.codigo=='' && objetoTarget.descripcion=='' && objetoTarget.medidas=='' && objetoTarget.precioUnit==''){
+      if (objetoTarget.cantidad=='' && objetoTarget.precioUnit=='' && objetoTarget.codigo=='' && objetoTarget.descripcion=='' && objetoTarget.medidas=='' && objetoTarget.precioUnit==''){
         booleanOK=true;
       }
       else //Si no esta vacío
@@ -233,4 +233,5 @@ export class ProformaComponent implements OnInit {
             });
       }
     /*Fin del script de word */
+
 }
