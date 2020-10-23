@@ -1,7 +1,12 @@
-<h3 class="text-center text-secondary mt-2"> Proforma </h3>
+<h3 class="text-center text-secondary mt-2"> Orden de compra </h3>
+<div class="row justify-content-center mb-2">
+  <div class="col-5 ">
+    <input #numeroOrdenCompra type="number" class="form-control" placeholder="# orden de compra" required>
+  </div>  
+</div>
 <div class="row justify-content-center">
   <div class="col-5 ">
-    <input #numeroProforma type="number" class="form-control" placeholder="# Proforma" required>
+    <input #nombreCliente type="text" class="form-control" placeholder="Nombre del cliente" required>
   </div>  
 </div>
 <hr>
@@ -43,7 +48,7 @@
     <div class="text-center mt-4">
     <button type="button" class="btn btn-info mr-1" (click)="addLine()">Agregar otro item
     </button>
-    <button type="button" class="btn btn-info" (click) ="createProforma()" [disabled]="descargando">
+    <button type="button" class="btn btn-info" (click) ="createOrdenCompra()" [disabled]="descargando">
       <span #descargarPDF> Descargar PDF</span>
       <span *ngIf="descargando">
       &nbsp;

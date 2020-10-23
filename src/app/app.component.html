@@ -1,1 +1,27 @@
-<CA-proforma></CA-proforma>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Sistema central de aceros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item active" *ngIf="flagPantalla==0">
+            <a class="nav-link" (click)="flagPantalla=0">Proforma</a>
+          </li>
+          <li class="nav-item" *ngIf="flagPantalla==1">
+            <a class="nav-link" (click)="flagPantalla=0">Proforma</a>
+          </li>
+          <li class="nav-item active" *ngIf="flagPantalla==1">
+            <a class="nav-link" (click)="flagPantalla=1">Orden de compra</a>
+          </li>
+          <li class="nav-item" *ngIf="flagPantalla==0">
+            <a class="nav-link" (click)="flagPantalla=1">Orden de compra</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+
+<CA-proforma *ngIf="flagPantalla==0"></CA-proforma>
+<CA-orden-compra *ngIf="flagPantalla==1"></CA-orden-compra>
