@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChildren, QueryList, ViewChild} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, QueryList, ViewChild, Input} from '@angular/core';
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import PizZipUtils from "pizzip/utils/index.js";
@@ -36,6 +36,7 @@ export class OrdenCompraComponent implements OnInit {
   @ViewChild('nombreCliente') nombreCliente: any; 
   @ViewChild('descargarPDF') descargarPDF: any;  
   @ViewChildren('formulario') formularios: QueryList<any>;  
+  @Input() clienteActual =null;
   arrayObjetos=[];
   IVA=0.13;
   subtotal;
@@ -170,7 +171,7 @@ export class OrdenCompraComponent implements OnInit {
 
       loadFile("././assets/templateOrdenCompra.docx",(error,content)=>{
         this.wordMainFunction(error,content,myAttributes);
-        resolve();
+        resolve(true);
      });
     });
       return promise;

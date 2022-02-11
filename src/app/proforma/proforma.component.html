@@ -1,9 +1,29 @@
 <h3 class="text-center text-secondary mt-2"> Proforma </h3>
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-2">
   <div class="col-5 ">
     <input #numeroProforma type="number" class="form-control" placeholder="# Proforma" required>
   </div>  
 </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-5 ">
+      <input #nombreCliente type="text" class="form-control" placeholder="Nombre del cliente" [value]="clienteActual.nombre" required>
+    </div>  
+  </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-5 ">
+      <input #direccionCliente type="text" class="form-control" placeholder="Direccion del cliente" [value]="clienteActual.direccion" required>
+    </div>  
+  </div>
+  <div class="row justify-content-center mb-2">
+    <div class="col-5 ">
+      <input #telefonoCliente type="text" class="form-control" placeholder="Telefono del cliente" [value]="clienteActual.telefono" required>
+    </div>  
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-5 ">
+      <input #codigoCliente type="text" class="form-control" placeholder="Código del cliente" [value]="clienteActual.codigo" required>
+    </div>  
+  </div>
 <hr>
 <form >
 <div class="container">

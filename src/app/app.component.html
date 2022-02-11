@@ -22,6 +22,18 @@
       </ul>
     </div>
   </nav>
-
-<CA-proforma *ngIf="flagPantalla==0"></CA-proforma>
-<CA-orden-compra *ngIf="flagPantalla==1"></CA-orden-compra>
+  <hr>
+ <div class="dropdown text-center">
+  <h3 class="text-center text-secondary mt-2"> Factura a nombre </h3>
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{clienteActual.titulo}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+      <ng-container *ngFor="let cliente of clientes">
+        <a class="dropdown-item" (click)="clienteActual=cliente">{{cliente.titulo}}</a>
+      </ng-container>
+    </div>
+  </div>
+  <hr>
+<CA-proforma *ngIf="flagPantalla==0" [clienteActual] ="clienteActual"></CA-proforma>
+<CA-orden-compra *ngIf="flagPantalla==1" [clienteActual] ="clienteActual"></CA-orden-compra>

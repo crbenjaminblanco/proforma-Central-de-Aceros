@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChildren, QueryList, ViewChild} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, QueryList, ViewChild,Input} from '@angular/core';
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import PizZipUtils from "pizzip/utils/index.js";
@@ -33,8 +33,13 @@ function loadFile(url, callback) {
 export class ProformaComponent implements OnInit {
   numeroLineas:any=[''];
   @ViewChild('numeroProforma') numeroProforma: any; 
+  @ViewChild('nombreCliente') nombreCliente: any; 
+  @ViewChild('direccionCliente') direccionCliente: any; 
+  @ViewChild('telefonoCliente') telefonoCliente: any; 
+  @ViewChild('codigoCliente') codigoCliente: any; 
   @ViewChild('descargarPDF') descargarPDF: any;  
   @ViewChildren('formulario') formularios: QueryList<any>;  
+  @Input() clienteActual :any;
   arrayObjetos=[];
   IVA=0.13;
   subtotal;
@@ -51,7 +56,7 @@ export class ProformaComponent implements OnInit {
 
   createProforma= () =>{
     let flagPass=this.setObjetos();
-    if (this.numeroProforma.nativeElement.value!=''){
+    if (this.numeroProforma.nativeElement.value!='' &&  this.nombreCliente.nativeElement.value!=''&&  this.direccionCliente.nativeElement.value!=''&&  this.telefonoCliente.nativeElement.value!=''&&  this.codigoCliente.nativeElement.value!=''){
       if (flagPass)
       {
         this.descargando=true;
@@ -63,8 +68,11 @@ export class ProformaComponent implements OnInit {
         alert("Revisa los datos: "+this.mensajeError);
       }
     }
-    else{
+    else if(this.numeroProforma.nativeElement.value==''){
       alert("Falta el numero de proforma");
+    }
+    else {
+      alert("Falta información del cliente");
     }
     }
 
@@ -136,6 +144,10 @@ export class ProformaComponent implements OnInit {
     /*Asigna los atributos del word*/
     setAttributes = () => {
       let wordAttributes= {
+        nombreCliente: this.nombreCliente.nativeElement.value,
+        direccionCliente: this.direccionCliente.nativeElement.value,
+        telefonoCliente: this.telefonoCliente.nativeElement.value,
+        codigoCliente: this.codigoCliente.nativeElement.value,
         numeroProforma: this.numeroProforma.nativeElement.value,
         lineaTabla: this.arrayObjetos,
         subTotal: this.subtotal,
@@ -166,7 +178,7 @@ export class ProformaComponent implements OnInit {
       //url cambia de manera local
       loadFile("././assets/templateProforma.docx",(error,content)=>{
         this.wordMainFunction(error,content,myAttributes);
-        resolve();
+        resolve(true);
      });
     });
       return promise;
